@@ -4,14 +4,26 @@ using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 using dotnet_sample_app.Models;
+using dotnet_sample_app.Filters;
+
 
 namespace dotnet_sample_app.Controllers
 {
     public class HomeController : Controller
     {
+        private readonly ILogger<HomeController> logger;
+
+        public HomeController(ILogger<HomeController> logger)
+        {
+            this.logger = logger;
+        }
+
         public IActionResult Index()
         {
+            logger.LogInformation("Hello, this is the index!");
+
             return View();
         }
 

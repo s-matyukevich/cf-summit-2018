@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using dotnet_sample_app.Middleware;
 
 namespace dotnet_sample_app
 {
@@ -37,6 +38,7 @@ namespace dotnet_sample_app
             }
 
             app.UseStaticFiles();
+            app.UseMiddleware<LoggingMiddleware>();
 
             app.UseMvc(routes =>
             {
